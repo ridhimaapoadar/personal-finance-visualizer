@@ -37,11 +37,19 @@ export async function POST(request: Request) {
 
     const budget = await Budget.create(body);
     return NextResponse.json({ data: budget }, { status: 201 });
-  } catch (error: any) {
-    console.error("Error creating budget:", error);
+  } catch (error) {
+  console.error("Error creating budget:", error);
+
+  if (error instanceof Error) {
     return NextResponse.json(
-      { error: error.message || "Failed to create budget" },
+      { error: error.message },
       { status: 500 }
     );
   }
+
+  return NextResponse.json(
+    { error: "Failed to create budget" },
+    { status: 500 }
+  );
+}
 }
