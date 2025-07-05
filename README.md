@@ -53,9 +53,9 @@ Built with **Next.js**, **React**, and **MongoDB**, it offers a responsive, mode
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/personal-finance-visualizer.git
+   git clone https://github.com/ridhimaapoadar/personal-finance-visualizer.git
    cd personal-finance-visualizer
-````
+   ````
 
 2. **Install dependencies**
 
@@ -155,11 +155,4 @@ npm run start
 
 This project is licensed under the **MIT License**.
 Feel free to fork, modify, and use it for your own financial planning!
-
-```
-
-Let me know if you'd like:
-- A version with demo screenshots
-- GitHub badges
-- A logo/banner at the top
-```
+---
