@@ -14,13 +14,11 @@ interface DashboardProps {
 }
 
 export function Dashboard({ transactions }: DashboardProps) {
-  // Calculate total expenses
   const totalExpenses = transactions.reduce(
     (total, transaction) => total + transaction.amount,
     0
   );
 
-  // Calculate category breakdown
   const categoryBreakdown = transactions.reduce((acc, transaction) => {
     const { category, amount } = transaction;
     if (!acc[category]) {
@@ -30,12 +28,10 @@ export function Dashboard({ transactions }: DashboardProps) {
     return acc;
   }, {} as Record<string, number>);
 
-  // Sort categories by amount (descending)
   const sortedCategories = Object.entries(categoryBreakdown).sort(
     ([, amountA], [, amountB]) => amountB - amountA
   );
 
-  // Get most recent transactions (top 5)
   const recentTransactions = [...transactions]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 5);

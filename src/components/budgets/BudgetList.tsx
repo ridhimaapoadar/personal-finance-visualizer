@@ -32,18 +32,15 @@ export function BudgetList({
   onEdit,
   onDelete,
 }: BudgetListProps) {
-  // Function to get month name from month number
   const getMonthName = (monthNumber: number) => {
     const date = new Date();
     date.setMonth(monthNumber - 1);
     return date.toLocaleString("default", { month: "long" });
   };
 
-  // Calculate spending for each budget
   const calculateSpending = (budget: BudgetData) => {
     const { category, month, year } = budget;
     
-    // Filter transactions by category, month, and year
     const relevantTransactions = transactions.filter((transaction) => {
       const transactionDate = new Date(transaction.date);
       return (
@@ -53,7 +50,6 @@ export function BudgetList({
       );
     });
     
-    // Sum the amounts
     const totalSpent = relevantTransactions.reduce(
       (sum, transaction) => sum + transaction.amount,
       0

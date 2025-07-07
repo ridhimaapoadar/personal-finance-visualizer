@@ -16,23 +16,19 @@ interface BudgetSummaryProps {
 }
 
 export function BudgetSummary({ budgets, transactions }: BudgetSummaryProps) {
-  // Get current month and year
   const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
+  const currentMonth = currentDate.getMonth() + 1; 
   const currentYear = currentDate.getFullYear();
 
-  // Filter budgets for current month and year
   const currentBudgets = budgets.filter(
     (budget) => budget.month === currentMonth && budget.year === currentYear
   );
 
-  // Calculate total budget and spending
   const totalBudget = currentBudgets.reduce(
     (total, budget) => total + budget.limit,
     0
   );
 
-  // Calculate spending for current month by category
   const calculateCategorySpending = (category: string) => {
     return transactions
       .filter((transaction) => {
@@ -46,7 +42,6 @@ export function BudgetSummary({ budgets, transactions }: BudgetSummaryProps) {
       .reduce((total, transaction) => total + transaction.amount, 0);
   };
 
-  // Calculate total spending for current month
   const totalSpending = transactions
     .filter((transaction) => {
       const transactionDate = new Date(transaction.date);
@@ -57,10 +52,8 @@ export function BudgetSummary({ budgets, transactions }: BudgetSummaryProps) {
     })
     .reduce((total, transaction) => total + transaction.amount, 0);
 
-  // Calculate overall budget progress
   const overallPercentage = totalBudget > 0 ? (totalSpending / totalBudget) * 100 : 0;
 
-  // Get month name
   const monthName = new Date(currentYear, currentMonth - 1).toLocaleString(
     "default",
     { month: "long" }

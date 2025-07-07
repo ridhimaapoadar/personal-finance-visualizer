@@ -14,7 +14,6 @@ interface CategoryChartProps {
   transactions: TransactionData[];
 }
 
-// Colors for different categories
 const COLORS = [
   "#0088FE",
   "#00C49F",
@@ -39,7 +38,6 @@ export function CategoryChart({ transactions }: CategoryChartProps) {
     return acc;
   }, [] as { name: string; value: number }[]);
 
-  // Sort by value in descending order
   categoryData.sort((a, b) => b.value - a.value);
 
   return (

@@ -34,7 +34,6 @@ export async function PUT(request: Request, { params }: Params) {
     const body = await request.json();
     await dbConnect();
 
-    // Check if a different budget for this category, month, and year already exists
     const existingBudget = await Budget.findOne({
       category: body.category,
       month: body.month,

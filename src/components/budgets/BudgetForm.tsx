@@ -60,9 +60,8 @@ const months = [
 ];
 
 export function BudgetForm({ onSubmit, initialData }: BudgetFormProps) {
-  // Get current month and year for default values
   const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
+  const currentMonth = currentDate.getMonth() + 1; 
   const currentYear = currentDate.getFullYear();
 
   const form = useForm<z.infer<typeof formSchema>>({

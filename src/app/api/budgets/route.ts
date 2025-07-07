@@ -21,7 +21,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     await dbConnect();
 
-    // Check if a budget for this category, month, and year already exists
     const existingBudget = await Budget.findOne({
       category: body.category,
       month: body.month,
